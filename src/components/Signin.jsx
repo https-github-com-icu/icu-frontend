@@ -1,21 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SigninPage = () => {
+const Signin = () => {
+  
+  
   return (
     <>
     <section className='sm:w-[500px] w-3/4  my-5 py-5 bg-white rounded-[50px] flex flex-col align-items justity-center items-center'>
     {/* Header */}
-     <div className=' my-5  rounded-md flex flex-col align-items items-center'>
+     <div className=' sm:my-5 my-0 rounded-md flex flex-col align-items items-center'>
       <img src="src\assets\profile_icon.svg" alt="Description" />
-      <p className='pt-3 text-[28px] font-bold'>환영합니다</p>
-      <p className='text-[16px] font-medium'>로그인 계속하기</p>
+      <p className='pt-3 sm:text-[28px] text-[20px] font-bold'>환영합니다</p>
+      <p className='sm:text-[16px] text-[14px] font-medium'>로그인 계속하기</p>
 
     </div>
     
 
     {/* Input */}
-    <div className=' my-8 space-y-8 bg-white rounded-md flex flex-col align-items justity-center items-center'>
+    <div className=' sm:my-8 my-0 space-y-8 bg-white rounded-md flex flex-col align-items justity-center items-center'>
       {/* ID Input */}
       <div className='w-[800px]py-3 flex-col align-items justity-center items-center'>
         <p className='text-[18px] font-bold '>ID</p>
@@ -35,10 +37,11 @@ const SigninPage = () => {
     </div>
 
     {/* Footer */}
-    <div className='sm:pt-10 pt-5 pb-20 px-2 bg-white rounded-md flex flex-col align-items justity-center items-center
+    <div className='sm:pt-10 pt-10  sm:pb-20 pb-10 px-2 bg-white rounded-md flex flex-col align-items justity-center items-center
       font-bold text-[18px]'>
        <div className='flex flex-row space-x-7'>
-          <button className='sm:px-10 px-5 py-2 bg-slate-300 shadow-orange-200 rounded-md'>
+          <button 
+            className='sm:px-10 px-5 py-2 bg-slate-300 shadow-orange-200 rounded-md'>
             회원가입
             </button>
       <Link to="/home">
@@ -54,4 +57,4 @@ const SigninPage = () => {
   )
 }
 
-export default SigninPage
+export default Signin
