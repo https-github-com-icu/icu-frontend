@@ -1,11 +1,16 @@
 import React from 'react'
+import LoginPage from '../LoginPage'
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
 
 const MainPage = () => {
   return (
     <>
-    <div>여기는 로그인 후 메인 페이지</div>
-
+    <Header />
+    login 후 페이지
+    <Footer />
     </>
+
   )
 }
 
