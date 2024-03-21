@@ -1,18 +1,17 @@
 import React from 'react'
 import Nav from '../../components/nav/Nav'
-import Footer from '../../components/footer/Footer'
-import StoreList from '../../components/store_list/StoreList'
-const HomePage = () => {
+
+const MyPage = () => {
   return (
     <>
     <div className='h-screen bg-slate-900'>
         <Nav />
         <div className='flex'>
-          <StoreList />
+          {/* 마이페이지 정보 */}
         </div>
     </div>
     </>
   )
 }
 
-export default HomePage
+export default MyPage
