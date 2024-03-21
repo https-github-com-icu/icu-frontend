@@ -3,6 +3,7 @@ import './App.css'
 import RegisterPage from './Pages/RegisterPage/index.jsx'
 import HomePage from './Pages/HomePage/index.jsx'
 import LoginPage from './Pages/LoginPage/index.jsx'
+import MyPage from './Pages/MyPage/index.jsx'
 
 import MyPage from './Pages/MyPage/index.jsx'
 

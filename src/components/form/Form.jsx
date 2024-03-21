@@ -1,31 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, } from 'react-router-dom'
+import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Form = ({title}) => {
-  const {register, handleSubmit, formState: {errors}, reset } = useForm({
+  const {register, setValue, getValues, handleSubmit, formState: {errors}, reset } = useForm({
+  mode: 'onSubmit'
+  
   })
 
   const [userData, setUserData] = useState({id: '', password:''})
 
   useEffect(() => {
-    console.log(userData)
+    console.log(userData);
   }, [userData])
   
+
+
+
+
 
   const onSubmit = ({id, password}) => {
     // submit 시 reset을 사용해 form 비우기
     setUserData({id: id, password: password});
+    localStorage.setItem("id", id);
+    localStorage.setItem("password", password);
     reset();
+    window.location.href='/homepage';
   }
 
   const notify = (message) => {
-    if(errors && errors.id && message == errors.id.message) {
-      toast(`${message}`, { duration: 2000 })
+    if(errors && errors.id && message == errors.id.message ) {
+      toast.error(`${message}`, { duration: 2000 })
     }
     if (errors && errors.password && message === errors.password.message) {
-      toast(`${message}`, { duration: 2300 });
+      toast.error(`${message}`, { duration: 2300 });
     }
 
   }
@@ -61,15 +71,28 @@ const Form = ({title}) => {
 
   }
 
+  const userPasswordConfirm = {
+    required: "비밀번호를 다시 입력하세요",
+    validate: {
+      matchesPreviousPassword: (value) => {
+        const {password} = getValues();
+          return password === value || "비밀번호가 일치하지 않습니다";
+      }
+    }
+  }
+
 
   return (
     <>
-  <section className='max-w-full h-full flex justify-center items-center font-[Pretendard]'>
-    
+    <section className='z-0 h-full flex justify-center items-center  font-[Pretendard] '>
+    <div className='bg-gradient-to-t from-slate-800 to-cyan-300 p-3 rounded-[50px]'>
     <div className='px-10 py-10 bg-white rounded-[50px] flex-col items-center'>
     {/* Header */}
-    <div className='flex flex-col  justify-center text-center'>
-     <img className='px-20' src="src\assets\profile_icon.svg" alt="Description" />
+    <div className='flex flex-col justify-center text-center'>
+      <div className='flex justify-center'>
+      <IoPersonCircleOutline 
+      className='h-20 w-20 justify-center'/>
+      </div>
      <p className='pt-3 text-[28px] font-bold'>환영합니다</p>
      <p className='text-[16px] font-bold'>{title} 계속하기</p>
      
@@ -83,24 +106,45 @@ const Form = ({title}) => {
               placeholder='아이디를 입력하세요' 
               type="id" />
 
-      <p className='mx-5 my-2 text-start text-[16px] font-bold'>PASSWORD</p>
+      <p className='mx-5 my-2 text-start text-[16px] font-bold'>Password</p>
           <input 
               {...register("password", userPassword)}
               className="border mx-5 p-2 rounded-md" 
               placeholder='비밀번호를 입력하세요' 
               type="password" />
-      
+
+
+       {title === '회원가입' && (
+        <>
+        <p className='mx-5 my-2 text-start text-[16px] font-bold'>Password Confirm</p>
+          <input 
+              {...register("passwordConfirm", userPasswordConfirm)}
+              className="border mx-5 p-2 rounded-md" 
+              placeholder='비밀번호를 다시 입력하세요' 
+              type="password" />
+   
+        </>
+       )}
+           
       <div>
+
+      {errors?.passwordConfirm && (
+           <p className='pt-3 font-semibold text-red-700'>{errors.passwordConfirm.message}</p>
+         )}
+
+
         <button className='px-10 my-8 py-3 font-bold bg-slate-300 shadow-orange-200 rounded-md'>
           {title}  
         </button>
       </div>
       </form>
+
+
           {/* ID 유효성 인증 실패 */}
           <Toaster />
-          {errors?.id && notify(errors.id.message)}
+        {errors?.id && notify(errors.id.message)}
          {errors?.password && notify(errors.password.message)}
-
+         
           { title == '회원가입' ? 
           ( <p className='text-[16px] font-medium'> 계정이 존재합니까? 
               <Link className='font-bold' to={'/login'}>
@@ -113,6 +157,7 @@ const Form = ({title}) => {
           }
        
         </div>
+    </div>
     </div>
   </section>
   </>
