@@ -1,8 +1,7 @@
 import React from 'react'
-import cctv from '../../assets/cctv.svg';
-import chart from '../../assets/chart.svg';
-import store from '../../assets/store.svg';
-import { Link } from 'react-router-dom';
+import { BiSolidCctv } from "react-icons/bi";
+import { FaStore } from "react-icons/fa";
+import { FaChartSimple } from "react-icons/fa6";
 
 const SideNav = () => {
   return (
@@ -11,11 +10,11 @@ const SideNav = () => {
       <nav className='pl-20 pt-20'>
       <ul className='flex-col space-y-5 text-[16px] font-[Pretendard] items-center font-bold text-white'>
         <li className='flex items-center min-w-40'>
-          <img className='p-2' src={cctv} alt="store"/>매장 관리</li>
+        <FaStore className='h-5 w-5 m-2' /> 매장 관리</li>
         <li className='flex items-center min-w-40'>
-          <img className='p-2' src={chart} alt="store" /> 차트</li>
+        <FaChartSimple className='h-5 w-5 m-2'/> 차트</li>
         <li className='flex items-center min-w-40'>
-          <img className='p-2' src={store} alt="store" /> CCTV</li>
+        <BiSolidCctv className='h-5 w-5 m-2'/> CCTV</li>
       </ul>
     </nav>
     </div>
