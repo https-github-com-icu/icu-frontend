@@ -1,15 +1,17 @@
 import React from 'react'
-import Header from '../../components/header/Header'
-import { Outlet } from 'react-router-dom'
+import Nav from '../../components/nav/Nav'
 import Footer from '../../components/footer/Footer'
-import LoginPage from '../LoginPage'
-
+import StoreList from '../../components/store_list/StoreList'
 const HomePage = () => {
   return (
     <>
-    홈페잊입니다
+    <div className='h-screen bg-slate-900'>
+        <Nav />
+        <div className='flex'>
+          <StoreList />
+        </div>
+    </div>
     </>
-    
   )
 }
 
