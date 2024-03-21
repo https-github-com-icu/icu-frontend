@@ -25,11 +25,12 @@ const Nav = () => {
   </button>
 
 
-  <ul className='flex text-lg font-bold space-x-5 text-white justify-center items-center'>
+  <ul className='flex text-lg  font-bold space-x-5 text-white justify-center items-center'>
     <li>
       <div className='relative flex justify-center'>
         <button onClick={() => {setAlert(!alert)}}>
         <FaBell className='h-[40px] w-[40px]' />
+        {!alert && (<div className='absolute rounded-full w-3 h-3 bg-red-600 top-0 right-0'></div>)}
         </button>
         {alert && (
         <Alert />
