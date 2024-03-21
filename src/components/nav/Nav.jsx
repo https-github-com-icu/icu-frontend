@@ -25,7 +25,7 @@ const Nav = () => {
   </button>
 
 
-  <ul className='flex text-lg font-bold space-x-3 text-white justify-center items-center'>
+  <ul className='flex text-lg font-bold space-x-5 text-white justify-center items-center'>
     <li>
       <div className='relative flex justify-center'>
         <button onClick={() => {setAlert(!alert)}}>
@@ -34,7 +34,6 @@ const Nav = () => {
         {alert && (
         <Alert />
         )}
-
       </div>
     </li>
     
