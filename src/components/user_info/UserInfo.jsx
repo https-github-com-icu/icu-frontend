@@ -1,6 +1,5 @@
 import React from 'react'
 import SideNav from '../side_nav/SideNav'
-import { Select, Option } from "@material-tailwind/react"
 
 const UserInfo = () => {
   return (
@@ -21,7 +20,7 @@ const UserInfo = () => {
 
 					<div className='w-full flex justify-center'>
 						<div className='w-[60%] p-4 text-[20px] font-bold'>
-							<ul className='w-full rouned-2x1 py-10 px-10 space-y-7'>
+							<ul className='w-full p-10 space-y-7'>
 								<li className='flex justify-between items-center text-center'>
 									<p>사용자</p>
 									<div className='p-2'>

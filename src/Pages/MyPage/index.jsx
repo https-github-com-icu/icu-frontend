@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Nav from '../../components/nav/Nav'
 import UserInfo from '../../components/user_info/UserInfo'
-import Footer from '../../components/footer/Footer'
 
 const MyPage = () => {
     useEffect(() => {
