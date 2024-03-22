@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import Header from '../../components/header/Header'
+import Nav from '../../components/nav/Nav'
+import UserInfo from '../../components/user_info/UserInfo'
 import Footer from '../../components/footer/Footer'
-import Input from './user-info/UserInfo'
 
 const MyPage = () => {
     useEffect(() => {
@@ -10,10 +10,11 @@ const MyPage = () => {
 
     return (
         <>
-        <div className='flex flex-col h-screen'>
-            <Header />
-            <Input />
-            <Footer />
+        <div className='h-screen bg-slate-900'>
+            <Nav />
+            <div className='flex'>
+                <UserInfo />
+            </div>
         </div>
         </>
     )
