@@ -3,9 +3,6 @@ import Nav from '../../components/nav/Nav'
 import UserInfo from '../../components/user_info/UserInfo'
 
 const MyPage = () => {
-    useEffect(() => {
-
-    }, [])
 
     return (
         <>

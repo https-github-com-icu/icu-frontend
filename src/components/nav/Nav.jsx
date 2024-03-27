@@ -5,6 +5,7 @@ import { FaBell } from "react-icons/fa";
 import { useState } from 'react';
 import Alert from '../alert/Alert';
 import Profile from '../profile/Profile';
+import { Link } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -19,12 +20,15 @@ const Nav = () => {
   return (
 <nav className='flex justify-between items-center px-20 py-10'>
   
-  <button
-    onClick={() => {
-      window.location.href='/homepage'
-    }}>
-    <img src={Logo} />
-  </button>
+  <Link to={'/homepage'}>
+    <button
+      onClick={() => {
+        window.location.href='/homepage'
+      }}>
+      <img src={Logo} />
+    </button>
+  </Link>
+ 
 
 
   <ul className='flex text-lg  font-bold space-x-5 text-white justify-center items-center'>

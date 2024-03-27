@@ -7,8 +7,8 @@ const StoreCctv = () => {
       <div className='w-full flex font-[Pretendard] text-white justify-center'>
         <SideNav />
 
-        <div className='w-4/5'>
-          <div className='flex justify-start p-20 pb-5'>
+        <div className='w-full'>
+          <div className='flex justify-start px-20 py-10'>
             <div className='min-w-[250px]'>
               <div className='font-bold text-[38px] min-w-1/2'>CCTV</div>
               <div className='text-black'>
@@ -23,7 +23,7 @@ const StoreCctv = () => {
 
           <div className='w-full flex justify-center'>
             <div className='w-[60%] p-4 font-bold flex-col space-y-4'>
-              <div flex justify-center>
+              <div className='flex justify-center'>
                 <video muted autoPlay loop>
                   <source src="/videos/ghost.mp4" type="video/mp4" />
                 </video>

@@ -27,7 +27,6 @@ const Form = ({title}) => {
     localStorage.setItem("id", id);
     localStorage.setItem("password", password);
     reset();
-    window.location.href='/homepage';
   }
 
   const notify = (message) => {
@@ -97,7 +96,6 @@ const Form = ({title}) => {
      <p className='text-[16px] font-bold'>{title} 계속하기</p>
      
      {/* Input */}
-
     <form onSubmit={handleSubmit(onSubmit)}>
       <p className='mx-5 my-2 text-start text-[16px] font-bold'>ID</p>
           <input 
@@ -132,11 +130,14 @@ const Form = ({title}) => {
            <p className='pt-3 font-semibold text-red-700'>{errors.passwordConfirm.message}</p>
          )}
 
+        <Link to={'/homepage'}>
+          <button 
+          className='px-10 my-8 py-3 font-bold bg-slate-300 shadow-orange-200 rounded-md'>
+            {title}  
+          </button>
+        </Link>
 
-        <button className='px-10 my-8 py-3 font-bold bg-slate-300 shadow-orange-200 rounded-md'>
-          {title}  
-        </button>
-      </div>
+        </div>
       </form>
 
 
