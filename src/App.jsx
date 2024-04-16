@@ -6,6 +6,7 @@ import LoginPage from './Pages/LoginPage/index.jsx'
 import MyPage from './Pages/MyPage/index.jsx'
 import StoreRegisterPage from './Pages/StoreRegisterPage/index.jsx'
 import CctvPage from './Pages/CctvPage/index.jsx'
+import ChartPage from './Pages/ChartPage/index.jsx'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <Route path="/homepage" element={<HomePage />} />
     <Route path="/mypage" element={<MyPage />} />
     <Route path="/cctv" element={<CctvPage />} />
+    <Route path="/chart" element={<ChartPage />} /> 
 
       {/* <Route path='product/:id' element={<DetailPage />} />
         <Route path='cart' element={<CartPage />} />
