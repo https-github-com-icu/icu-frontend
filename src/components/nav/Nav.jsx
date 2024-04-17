@@ -1,30 +1,35 @@
 import React, { useEffect } from 'react'
-import Logo from '../../assets/logo.svg'
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaBell } from "react-icons/fa";
 import { useState } from 'react';
 import Alert from '../alert/Alert';
 import Profile from '../profile/Profile';
+import { useNavigate } from 'react-router-dom';
 
 
 const Nav = () => {
   const [alert, setAlert] = useState(false);
   const [profile, setProfile] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
-    console.log('리렌더링')
   }, [alert, profile])
   
 
   return (
 <nav className='flex justify-between items-center px-20 py-10'>
   
-  <button
-    onClick={() => {
-      window.location.href='/homepage'
-    }}>
-    <img src={Logo} />
-  </button>
+    <button
+      onClick={() => {navigate('/homepage')}}
+
+     >
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="40" fill="#474F7A"/>
+        <ellipse cx="47.8943" cy="40.2631" rx="32.1053" ry="38.6842" fill="#1F2544"/>
+        <ellipse cx="58.1575" cy="41.0526" rx="21.8421" ry="30.5263" fill="#37B5B6"/>
+        <ellipse cx="63.1575" cy="41.3158" rx="16.8421" ry="27.6316" fill="#81689D"/>
+        </svg>
+    </button>
+ 
 
 
   <ul className='flex text-lg  font-bold space-x-5 text-white justify-center items-center'>
