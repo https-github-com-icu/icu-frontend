@@ -11,6 +11,9 @@ export default {
         'primary-color': ''
       }
     },
+      fontFamily: {
+        Pretendard: ["Pretendard"]
+      },
   },
   plugins: [],
 }
