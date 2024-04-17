@@ -2,7 +2,9 @@ import React from 'react'
 import { BiSolidCctv } from "react-icons/bi";
 import { FaStore } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
+
 import { useNavigate } from 'react-router-dom';
+
 
 const SideNav = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const SideNav = () => {
     <>
     <div className='h-full w-[250px]'>
       <nav className='flex p-20 h-full'>
+
       <ul className='flex-col pl-10 space-y-5  text-[20px] font-[Pretendard] items-center font-bold text-white'>
        
        {/* 매장 관리 이동 버튼 */}
@@ -40,7 +43,6 @@ const SideNav = () => {
         <li className='flex items-center w-40'>
         <BiSolidCctv className='h-6 w-8 m-2 pr-2'/> CCTV</li>
         </button>
-
       </ul>
     </nav>
     </div>
