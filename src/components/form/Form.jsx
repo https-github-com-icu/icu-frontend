@@ -1,31 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import { Link, Navigate, } from 'react-router-dom'
+import { Link, useNavigate, } from 'react-router-dom'
 import { IoPersonCircleOutline } from "react-icons/io5";
+import axios from 'axios';
 
 const Form = ({title}) => {
+  const navigate = useNavigate();
+
+  // const [userData, setUserData] = useState({id: '', password:''})
   const {register, setValue, getValues, handleSubmit, formState: {errors}, reset } = useForm({
   mode: 'onSubmit'
   
   })
 
-  const [userData, setUserData] = useState({id: '', password:''})
-
   useEffect(() => {
-    console.log(userData);
-  }, [userData])
-  
+  }, [])
 
 
-
-
-
-  const onSubmit = ({id, password}) => {
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      // 로그인 
+      if(title  == '로그인') {
+        const res = await axios.post('http://localhost:8080', data);
+        if (res.status === 200) {
+          console.log('로그인 성공', res.data);
+          alert('로그인에 성공했습니다!');
+          navigate('/homepage');
+        }
+      } 
+      // 회원가입
+      else if (title == '회원가입') {
+        const res = await axios.post('http://localhost:8080/register', data);
+        if(res.status === 201) {
+          console.log('회원가입 성공', res.data);
+          alert('회원가입에 성공했습니다!');
+          navigate('/');
+        }
+      }
+    } catch (error) {
+      console.error('오류:', error.response.data);
+    }
     // submit 시 reset을 사용해 form 비우기
-    setUserData({id: id, password: password});
-    localStorage.setItem("id", id);
-    localStorage.setItem("password", password);
     reset();
   }
 
@@ -129,14 +146,11 @@ const Form = ({title}) => {
       {errors?.passwordConfirm && (
            <p className='pt-3 font-semibold text-red-700'>{errors.passwordConfirm.message}</p>
          )}
-
-        <Link to={'/homepage'}>
-          <button 
+          <button
+          type='submit'
           className='px-10 my-8 py-3 font-bold bg-slate-300 shadow-orange-200 rounded-md'>
             {title}  
           </button>
-        </Link>
-
         </div>
       </form>
 

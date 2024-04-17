@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Form from '../../../components/form/Form'
+import Form from '../../../components/form/Form';
 
 
 const SignIn = () => {

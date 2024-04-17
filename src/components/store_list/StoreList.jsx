@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import SideNav from '../side_nav/SideNav'
-import { Link } from 'react-router-dom'
 import { Button } from '@material-tailwind/react'
 import StoreRegistration from '../store_registration/StoreRegistration'
 

@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import Nav from '../../components/nav/Nav';
-import Chart from '../../components/chart/Chart';
 
-const ChartPage = () => {
+import React, { useEffect } from 'react'
+import Nav from '../../components/nav/Nav'
+import StoreChart from '../../components/store_chart/StoreChart'
+
+const Chart = () => {
+
   useEffect(() => {
 
   }, [])
@@ -12,11 +14,13 @@ const ChartPage = () => {
     <div className='min-h-screen bg-slate-900'>
       <Nav />
       <div className='flex'>
-        <Chart />
+
+        <StoreChart />
       </div>
     </div>
     </>
-  )
+  ) 
 }
 
-export default ChartPage
+export default Chart
+
