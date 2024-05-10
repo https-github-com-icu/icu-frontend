@@ -1,12 +1,10 @@
 import React from 'react'
-import SideNav from '../side_nav/SideNav'
+import SideNav from '../nav/SideNav'
 
 const StoreChart = () => {
   return (
     <>
 			<div className='w-full flex font-[Pretendard] text-white justify-center'>
-				{/* 사이드 네비게이션 */}
-				<SideNav />
 
 				<div className='w-full'>
 					{/* 마이페이지 정보 */}

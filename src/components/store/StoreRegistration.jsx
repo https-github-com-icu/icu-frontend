@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from '../side_nav/SideNav'
-import StoreList from '../store_list/StoreList'
+import SideNav from '../nav/SideNav'
+import StoreList from './StoreList'
 import { Button } from '@material-tailwind/react'
 
 const StoreRegistration = ({setShowView}) => {
@@ -12,7 +12,6 @@ const StoreRegistration = ({setShowView}) => {
   return (
     <>
       <div className='w-full flex font-[Pretendard] text-white justifyu-center'>
-        <SideNav />
         <div className='w-full'>
         {/* 매장 리스트 */}
         <div className='w-full min-full flex-col'>

@@ -1,11 +1,10 @@
 import React from 'react'
-import SideNav from '../side_nav/SideNav'
+import SideNav from '../nav/SideNav'
 
 const StoreCctv = () => {
   return (
     <>
       <div className='w-full flex font-[Pretendard] text-white justify-center'>
-        <SideNav />
 
         <div className='w-full'>
           <div className='flex justify-start px-20 py-10'>

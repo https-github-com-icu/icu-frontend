@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
-import { Link, useNavigate, } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { IoPersonCircleOutline } from "react-icons/io5";
 import axios from 'axios';
 
-const Form = ({title}) => {
-  const navigate = useNavigate();
-
+const Form = ({ title, formHandler }) => {
   // const [userData, setUserData] = useState({id: '', password:''})
   const {register, setValue, getValues, handleSubmit, formState: {errors}, reset } = useForm({
   mode: 'onSubmit'
@@ -18,31 +16,8 @@ const Form = ({title}) => {
   }, [])
 
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    try {
-      // 로그인 
-      if(title  == '로그인') {
-        const res = await axios.post('http://localhost:8080', data);
-        if (res.status === 200) {
-          console.log('로그인 성공', res.data);
-          alert('로그인에 성공했습니다!');
-          navigate('/homepage');
-        }
-      } 
-      // 회원가입
-      else if (title == '회원가입') {
-        const res = await axios.post('http://localhost:8080/register', data);
-        if(res.status === 201) {
-          console.log('회원가입 성공', res.data);
-          alert('회원가입에 성공했습니다!');
-          navigate('/');
-        }
-      }
-    } catch (error) {
-      console.error('오류:', error.response.data);
-    }
-    // submit 시 reset을 사용해 form 비우기
+  const onSubmit = (data) => {
+    formHandler(data)
     reset();
   }
 

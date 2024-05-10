@@ -1,5 +1,5 @@
 import React from 'react'
-import SideNav from '../side_nav/SideNav'
+import SideNav from '../nav/SideNav'
 
 const UserInfo = () => {
   return (
