@@ -4,7 +4,9 @@ import { FaBell } from "react-icons/fa";
 import { useState } from 'react';
 import Alert from '../alert/Alert';
 import Profile from '../profile/Profile';
+
 import { useNavigate } from 'react-router-dom';
+
 
 
 const Nav = () => {
@@ -18,6 +20,7 @@ const Nav = () => {
   return (
 <nav className='flex justify-between items-center px-20 py-10'>
   
+
     <button
       onClick={() => {navigate('/homepage')}}
 
@@ -29,7 +32,7 @@ const Nav = () => {
         <ellipse cx="63.1575" cy="41.3158" rx="16.8421" ry="27.6316" fill="#81689D"/>
         </svg>
     </button>
- 
+
 
 
   <ul className='flex text-lg  font-bold space-x-5 text-white justify-center items-center'>
