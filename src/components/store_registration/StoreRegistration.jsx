@@ -3,7 +3,7 @@ import SideNav from '../side_nav/SideNav'
 import StoreList from '../store_list/StoreList'
 import { Button } from '@material-tailwind/react'
 
-const StoreRegistration = ({setShowView}) => {
+const StoreRegistration = ({ setChangeView }) => {
 
   useEffect(() => {
 
@@ -12,7 +12,6 @@ const StoreRegistration = ({setShowView}) => {
   return (
     <>
       <div className='w-full flex font-[Pretendard] text-white justifyu-center'>
-        <SideNav />
         <div className='w-full'>
         {/* 매장 리스트 */}
         <div className='w-full min-full flex-col'>
@@ -48,7 +47,7 @@ const StoreRegistration = ({setShowView}) => {
                       
                       <Button 
                         onClick={() => {
-                          setShowView(true)
+                          setChangeView("storeList")
                         }}
                         className='w-2/5 h-[60px] px-10 py-2 bg-slate-700 flex justify-center items-center rounded-lg'>
                         <p>등록</p>

@@ -10,7 +10,7 @@ const Profile = () => {
     <div className='w-[200px] py-2 bg-slate-800 shadow-md top-[65px] right-3 absolute px-3 font-[Pretendard] text-white rounded-lg'>
     <ul>
     <li>
-
+      <Link>
       <button
           onClick={() => {navigate('/mypage')}}
 
@@ -28,7 +28,7 @@ const Profile = () => {
           >
         <p className='px-3'>로그아웃</p>
       </button>
-      </Link>
+    </Link>
     </li>
     </ul>
   </div>
