@@ -15,6 +15,8 @@ export default {
         Pretendard: ["Pretendard"]
       },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio')
+  ],
 }
 

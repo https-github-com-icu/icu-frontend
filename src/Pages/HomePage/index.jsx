@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <>
-    <div className='h-screen bg-slate-900'>
+    <div className='min-h-screen bg-slate-900'>
         <Nav />
         <div className='flex w-full'>
           <SideNav setChangeView={setChangeView}/>
