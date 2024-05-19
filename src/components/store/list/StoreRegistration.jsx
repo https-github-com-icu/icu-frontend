@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from '../nav/SideNav'
-import StoreList from './StoreList'
+import SideNav from '../../nav/SideNav'
+import StoreList from '../list/StoreList'
 import { Button } from '@material-tailwind/react'
 import axios from 'axios'
 

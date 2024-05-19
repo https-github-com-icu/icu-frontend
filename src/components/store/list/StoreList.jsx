@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from '../nav/SideNav'
+import SideNav from '../../nav/SideNav'
 import { Button } from '@material-tailwind/react'
-import StoreRegistration from './StoreRegistration'
+import StoreRegistration from '../list/StoreRegistration'
 import axios from 'axios';
 
 const StoreList = () => {
