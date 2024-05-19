@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
 import Table from './Table.jsx'
 import './Table.css';
 
-const StoreChart = () => {
+const Chart = () => {
   const data = [
     {
       name: '1월',
@@ -72,4 +72,4 @@ const StoreChart = () => {
   )
 }
 
-export default StoreChart
+export default Chart
