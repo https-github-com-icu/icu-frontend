@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import Form from '../../../components/form/Form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-
+  const nav = useNavigate()
   const formHandler = async ( data ) => {
     try {
       const res = await axios.post('http://localhost:8080/', data);
       if (res.status == 200) {
         console.log("로그인 성공", res.data);
-        navigator("/");
+        nav("/homepage");
       } else {
         console.log(res.status)
       }

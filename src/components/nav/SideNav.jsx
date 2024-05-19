@@ -6,7 +6,6 @@ import { FaChartSimple } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import HomePage from '../../Pages/HomePage';
 
-<<<<<<< HEAD:src/components/nav/SideNav.jsx
 const SideNav = ({ setCategory }) => {
 
   useEffect(() => {
@@ -17,11 +16,6 @@ const SideNav = ({ setCategory }) => {
     }
   }, [])
   
-=======
-
-const SideNav = () => {
-  const navigate = useNavigate();
->>>>>>> acd7d242076deef6547ce5f67ffb8db23032056d:src/components/side_nav/SideNav.jsx
 
   return (
     <>
