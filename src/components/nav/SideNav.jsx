@@ -3,9 +3,6 @@ import { BiSolidCctv } from "react-icons/bi";
 import { FaStore } from "react-icons/fa";
 import { FaChartSimple } from "react-icons/fa6";
 
-import { useNavigate } from 'react-router-dom';
-import HomePage from '../../Pages/HomePage';
-
 const SideNav = ({ setCategory }) => {
 
   useEffect(() => {
@@ -22,7 +19,7 @@ const SideNav = ({ setCategory }) => {
     <div className='h-full w-[250px]'>
       <nav className='flex p-20 h-full'>
 
-      <ul className='flex-col pl-10 space-y-5  text-[20px] font-[Pretendard] items-center font-bold text-white'>
+      <ul className='flex-col pl-10 pt-10 space-y-5  text-[20px] font-[Pretendard] items-center font-bold text-white'>
        
        {/* 매장 관리 이동 버튼 */}
         <button

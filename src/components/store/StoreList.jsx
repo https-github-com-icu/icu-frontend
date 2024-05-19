@@ -39,7 +39,7 @@ const StoreList = () => {
             {/* 매장 등록 & 편집 버튼 그룹 */}
             <Button
               onClick={() => {
-                setShowView(false)
+                setChangeView("storeRegistration")
               }} 
               className='w-full px-4 py-2 bg-slate-800 flex justify-center rounded-lg'>
             <p className='justify-center '>매장 등록</p>

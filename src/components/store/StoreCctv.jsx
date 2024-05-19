@@ -1,11 +1,30 @@
-import React from 'react'
-import SideNav from '../nav/SideNav'
+import React, { useEffect, useRef } from 'react'
 
 const StoreCctv = () => {
+
+  let videoRef = useRef(null)
+
+  const getUserCamera = () => {
+    navigator.mediaDevices.getUserMedia({
+      video:true
+    })
+    .then((stream) => {
+      let video = videoRef.current
+      video.srcObject = stream
+      video.play()
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+  useEffect(() => {
+    getUserCamera()
+  },[videoRef])
+
   return (
     <>
       <div className='w-full flex font-[Pretendard] text-white justify-center'>
-
         <div className='w-full'>
           <div className='flex justify-start px-20 py-10'>
             <div className='min-w-[250px]'>
@@ -23,9 +42,9 @@ const StoreCctv = () => {
           <div className='w-full flex justify-center'>
             <div className='w-[60%] p-4 font-bold flex-col space-y-4'>
               <div className='flex justify-center'>
-                <video muted autoPlay loop>
-                  <source src="/videos/ghost.mp4" type="video/mp4" />
-                </video>
+                <div className='w-full aspect-w-16 aspect-h-9'>
+                  <video className='w-full h-full object-cover transform -scale-x-100' ref={videoRef}></video>
+                </div>
               </div>
 
               <div className='w-fit'>
