@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
-import SideNav from '../side_nav/SideNav'
-import Table from './Table'
+import Table from './Table.jsx'
 import './Table.css';
 
 const Chart = () => {
@@ -24,7 +23,7 @@ const Chart = () => {
       smoking: 2,
       theft: 10,
     },
-  ];
+  ];    
 
   const [selectedMonth, setSelectedMonth] = useState('1월');
   const filteredData = data.filter(item => item.name === selectedMonth);
@@ -32,7 +31,6 @@ const Chart = () => {
   return (
     <>
     <div className='w-full flex font-[Pretendard] text-white justify-center'>
-      <SideNav />
       <div className='w-full'>
         <div className='w-full min-full flex-col'>
           <div className='flex justify-start px-20 py-10'>
@@ -50,9 +48,9 @@ const Chart = () => {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Legend />
-                <Bar dataKey="loudSinger" fill="#FFE7C2" label={{position: 'top', fontsize: 14}} />
-                <Bar dataKey="smoking" fill="#A3CAE7" label={{position: 'top', fontsize: 14}} /> 
-                <Bar dataKey="theft" fill="#68B4A2" label={{position: 'top', fontsize: 14}} />
+                <Bar dataKey="loudSinger" fill="#e0e7ff" label={{position: 'top', fontsize: 14}} />
+                <Bar dataKey="smoking" fill="#a5b4fc" label={{position: 'top', fontsize: 14}} /> 
+                <Bar dataKey="theft" fill="#6366f1" label={{position: 'top', fontsize: 14}} />
               </BarChart>
             </div>
             <select

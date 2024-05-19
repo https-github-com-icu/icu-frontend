@@ -2,14 +2,26 @@ import React, { useEffect, useState } from 'react'
 import SideNav from '../nav/SideNav'
 import { Button } from '@material-tailwind/react'
 import StoreRegistration from './StoreRegistration'
+import axios from 'axios';
 
 const StoreList = () => {
   const [showView, setShowView] = useState(true)
+  const [stores, setStores] = useState([]);
 
+  useEffect(() => {
+    // 매장 리스트를 불러오는 함수
+    const fetchStores = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/store');
+        setStores(response.data);
+      } catch (error) {
+        console.error('매장 리스트를 불러오는 중 오류 발생:', error);
+      }
+    };
 
-    useEffect(() => {
-   
-  }, [])
+    // 페이지가 로드될 때 매장 리스트를 불러옴
+    fetchStores();
+  }, [stores]);
   
 
   return (
@@ -27,7 +39,7 @@ const StoreList = () => {
             {/* 매장 등록 & 편집 버튼 그룹 */}
             <Button
               onClick={() => {
-                setShowView(false)
+                setChangeView("storeRegistration")
               }} 
               className='w-full px-4 py-2 bg-slate-800 flex justify-center rounded-lg'>
             <p className='justify-center '>매장 등록</p>
@@ -50,24 +62,14 @@ const StoreList = () => {
                 </div>
             </li>
             <hr />
-              <li className='flex justify-between items-center text-center'>
-                <ul>스마트프리즘</ul>
-                <div className='w-1/3 flex justify-center'>
-                <ul className='bg-red-500 rounded-[20px] px-3 py-1'>No alter</ul>
-                </div>
-              </li>
-              <li className='flex justify-between items-center text-center'>
-                <ul>터치포인트</ul>
-                <div className='w-1/3 flex justify-center'>
-                <ul className='bg-green-500 rounded-[20px] px-3 py-1'>Notification</ul>
-                </div>
-              </li>
-              <li className='flex justify-between items-center text-center'>
-                <ul>스마트셀프</ul>
-                <div className='w-1/3 flex justify-center'>
-                <ul className='bg-red-500 rounded-[20px] px-3 py-1'>No alter</ul>
-                </div>
-              </li>
+            {stores.map(store => (
+                    <li key={store._id} className='flex justify-between items-center text-center'>
+                      <ul>{store.name}</ul>
+                      <div className='w-1/3 flex justify-center'>
+                        <ul className='bg-red-500 rounded-[20px] px-3 py-1'>No alter</ul>
+                      </div>
+                    </li>
+                  ))}
             </div>
           </div>
           </div>

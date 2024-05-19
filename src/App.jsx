@@ -4,12 +4,6 @@ import RegisterPage from './Pages/RegisterPage/index.jsx'
 import HomePage from './Pages/HomePage/index.jsx'
 import LoginPage from './Pages/LoginPage/index.jsx'
 import MyPage from './Pages/MyPage/index.jsx'
-<<<<<<< HEAD
-=======
-
-import CctvPage from './Pages/CctvPage/index.jsx'
-import Chart from './Pages/ChartPage/index.jsx'
->>>>>>> acd7d242076deef6547ce5f67ffb8db23032056d
 
 
 function App() {
