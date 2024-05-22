@@ -4,6 +4,8 @@ import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { IoPersonCircleOutline } from "react-icons/io5";
 import axios from 'axios';
+ import CryptoJS from 'crypto-js';
+
 
 const Form = ({ title, formHandler }) => {
   // const [userData, setUserData] = useState({id: '', password:''})
@@ -15,9 +17,26 @@ const Form = ({ title, formHandler }) => {
   useEffect(() => {
   }, [])
 
+ // 입력된 ID와 패스워드를 암호화하는 함수
+ const encryptUserData = (ID, PASSWORD) => {
+  const encryptedID = encryptData(ID, 'idSalt');
+  const encryptedPassword = encryptData(PASSWORD, '');
+
+  return {
+    ID: encryptedID,
+    PASSWORD: encryptedPassword,
+  };
+};
+
+// 데이터 암호화 함수
+const encryptData = (data, secretKey) => {
+  return CryptoJS.AES.encrypt(data, secretKey).toString();
+};
 
   const onSubmit = (data) => {
-    formHandler(data)
+    const encryptedData = encryptUserData(data.id, data.password);
+
+    formHandler(data, encryptedData)
     reset();
   }
 
@@ -89,30 +108,43 @@ const Form = ({ title, formHandler }) => {
      
      {/* Input */}
     <form onSubmit={handleSubmit(onSubmit)}>
-      <p className='mx-5 my-2 text-start text-[16px] font-bold'>ID</p>
+      <p className='mt-2 mx-5 text-start text-md font-bold'>ID</p>
           <input 
               {...register("id", userID)}
-              className="border mx-5 p-2 rounded-md" 
+              className="border mx-5 px-2 py-1 rounded-md" 
               placeholder='아이디를 입력하세요' 
               type="id" />
 
-      <p className='mx-5 my-2 text-start text-[16px] font-bold'>Password</p>
+      <p className='mt-2 mx-5 text-start text-md font-bold'>Password</p>
           <input 
               {...register("password", userPassword)}
-              className="border mx-5 p-2 rounded-md" 
+              className="border mx-5 px-2 py-1 rounded-md" 
               placeholder='비밀번호를 입력하세요' 
               type="password" />
 
 
        {title === '회원가입' && (
         <>
-        <p className='mx-5 my-2 text-start text-[16px] font-bold'>Password Confirm</p>
+        <p className='mt-2 mx-5 text-start text-md font-bold'>Password Confirm</p>
           <input 
               {...register("passwordConfirm", userPasswordConfirm)}
               className="border mx-5 p-2 rounded-md" 
               placeholder='비밀번호를 다시 입력하세요' 
               type="password" />
-   
+        <p className='mt-2 mx-5 text-start text-md font-bold'>성명</p>
+                      <input
+                        {...register("name")}
+                        className="border mx-5 px-2 py-1 rounded-md"
+                        placeholder='성명'
+                        type="text" />
+                    
+        <p className='mt-2 mx-5 text-start text-md font-bold'>전화번호</p>
+        <input
+
+          {...register("tel")}
+          className="border mx-5 px-2 py-1 rounded-md"
+          placeholder='전화번호'
+          type="text" />
         </>
        )}
            

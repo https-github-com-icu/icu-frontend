@@ -8,8 +8,7 @@ const RegisterPage = () => {
   
   return (
     <>
-    <div className='flex flex-col h-screen justify-center items-center'>
-      <Header />
+    <div className='flex flex-col h-screen'>
       <SignUp />
     </div>
     </>
