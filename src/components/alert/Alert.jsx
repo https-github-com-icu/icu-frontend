@@ -3,7 +3,7 @@ import React from 'react'
 const Alert = () => {
   return (
     <>
-      <div className=' shadow-md top-[60px] absolute w-[230px] text-center font-Pretendard text-black bg-white rounded-lg'>
+      <div className='z-0 shadow-md top-[60px] absolute w-[230px] text-center font-Pretendard text-black bg-white rounded-lg'>
       <ul>
         <li className='m-5 mx-10 rounded-[50px] bg-slate-300'>2024.01.01</li>
         <li className='mt-2 mx-5 text-left '>매장명1 - 알림 내용</li>

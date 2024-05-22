@@ -10,7 +10,6 @@ const MyPage = () => {
         <div className='h-screen bg-slate-900'>
             <Nav />
             <div className='flex'>
-                <SideNav />
                 <UserInfo />
             </div>
         </div>

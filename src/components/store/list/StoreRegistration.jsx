@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from '../nav/SideNav'
-import StoreList from './StoreList'
+import SideNav from '../../nav/SideNav'
+import StoreList from '../list/StoreList'
 import { Button } from '@material-tailwind/react'
 import axios from 'axios'
 
-const StoreRegistration = ({setShowView}) => {
+const StoreRegistration = ({setShowRegister}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [wifi, setWifi] = useState('');
@@ -13,17 +13,14 @@ const StoreRegistration = ({setShowView}) => {
     try {
       const response = await axios.post('http://localhost:8080/api/store', { name, location, wifi }); // ownerId를 owner로 추가하여 전달
       console.log(response.data); // 서버에서 받은 응답 확인
-      setShowView(true); // 성공 시 뷰 변경
     } catch (error) {
       console.error('매장 등록 중 오류 발생:', error);
       // 오류 처리
     }
-    
+    setShowRegister(false); // 성공 시 뷰 변경
   };
 
-  useEffect(() => {
 
-}, [])
 
   return (
     <>

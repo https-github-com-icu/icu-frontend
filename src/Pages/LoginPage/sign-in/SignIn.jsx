@@ -5,17 +5,30 @@ import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const nav = useNavigate()
-  const formHandler = async ( data ) => {
+
+  const formHandler = async ( data, encryptedData) => {
+
     try {
-      const res = await axios.post('http://localhost:8080/', data);
-      if (res.status == 200) {
-        console.log("로그인 성공", res.data);
-        nav("/homepage");
+      const response = await fetch('http://localhost:10110/master/signin', {
+      method: 'POST',  
+      headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...encryptedData,
+        })
+      });
+      if( response.ok ) {
+        const responseData = await response.json();
+        localStorage.setItem('userToken', responseData);
+        console.log(data)
+        console.log(encryptedData)
+        nav('/homepage')
       } else {
-        console.log(res.status)
+        console.log('로그인 실패:', response.statusText)
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

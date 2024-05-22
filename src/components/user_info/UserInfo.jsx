@@ -4,7 +4,7 @@ import React from 'react'
 const UserInfo = () => {
   return (
     <>
-			<div className='w-full flex font-[Pretendard] text-white justify-center'>
+			<div className='w-full min-w-full flex font-[Pretendard] text-white justify-center'>
 				{/* 사이드 네비게이션 */}
 
 				<div className='w-full'>

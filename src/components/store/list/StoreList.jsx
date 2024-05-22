@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from '../nav/SideNav'
+import SideNav from '../../nav/SideNav'
 import { Button } from '@material-tailwind/react'
-import StoreRegistration from './StoreRegistration'
+import StoreRegistration from '../list/StoreRegistration'
 import axios from 'axios';
 
-const StoreList = () => {
-  const [showView, setShowView] = useState(true)
+const StoreList = ({}) => {
+  const [showRegister, setShowRegister] = useState(false)
   const [stores, setStores] = useState([]);
+  const [token, setToken] = useState('');
+
+  
 
   useEffect(() => {
+    // 토큰 확인
+    const fetchToken = () => {
+      const storedToken = localStorage.getItem('userToken');
+      if(storedToken) {
+        setToken(storedToken)
+      } else {
+        console.error('토큰이 없습니다. 로그인 후 다시 시도해주세요.');
+      }
+    }
+    fetchToken()
+
     // 매장 리스트를 불러오는 함수
     const fetchStores = async () => {
       try {
@@ -19,15 +33,17 @@ const StoreList = () => {
       }
     };
 
-    // 페이지가 로드될 때 매장 리스트를 불러옴
-    fetchStores();
-  }, [stores]);
+    // 토큰 존재 시 매장 리스트 불러옴
+    if (token) {
+      fetchStores();
+    }
+  }, [stores, showRegister, token]);
   
 
   return (
     <>
     <div className='w-full flex font-[Pretendard] text-white justify-center'>
-      {showView ? (
+      {!showRegister ? (
         <div className='w-full'>
       {/* 매장 리스트 */}
       <div className='w-full min-full flex-col '>
@@ -39,7 +55,7 @@ const StoreList = () => {
             {/* 매장 등록 & 편집 버튼 그룹 */}
             <Button
               onClick={() => {
-                setChangeView("storeRegistration")
+                setShowRegister(true)
               }} 
               className='w-full px-4 py-2 bg-slate-800 flex justify-center rounded-lg'>
             <p className='justify-center '>매장 등록</p>
@@ -77,7 +93,7 @@ const StoreList = () => {
         </div>
         </div>
       ): (
-        <StoreRegistration setShowView={setShowView}/>
+        <StoreRegistration setShowRegister={setShowRegister}/>
       )}
 
     

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../../components/nav/Nav'
 import SideNav from '../../components/nav/SideNav'
-import StoreList from '../../components/store/StoreList'
-import StoreChart from '../../components/store/StoreChart'
-import StoreCctv from '../../components/store/StoreCctv'
+import StoreList from '../../components/store/list/StoreList'
+import StoreChart from '../../components/store/chart/StoreChart'
+import StoreCctv from '../../components/store/cctv/StoreCctv'
+
 const HomePage = () => {
   const [category, setCategory] = useState('showStorelist');
 
