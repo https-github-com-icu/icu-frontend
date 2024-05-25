@@ -5,19 +5,12 @@ import { Button } from '@material-tailwind/react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const StoreRegistration = ({setShowRegister}) => {
+const StoreRegistration = ({setShowRegister, fetchStores}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [wifi, setWifi] = useState('');
   const [token, setToken] = useState(localStorage.getItem('userToken') || '')
 
-  useEffect(() => {
-    
-  
-    return () => {
-      
-    }
-  }, [])
   
   const handleSubmit = async () => {
     try {
@@ -38,6 +31,7 @@ const StoreRegistration = ({setShowRegister}) => {
       // 오류 처리
     }
     setShowRegister(false); // 성공 시 뷰 변경
+    fetchStores()
   };
 
 

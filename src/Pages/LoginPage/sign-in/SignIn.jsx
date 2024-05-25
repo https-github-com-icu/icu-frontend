@@ -19,11 +19,10 @@ const SignIn = () => {
       });
       if( response.ok ) {
         const responseData = await response.json();
-        console.log(responseData)
         localStorage.setItem('userToken', responseData.token);
         nav('/homepage')
       } else {
-        console.log('로그인 실패:', response.statusText)
+        alert('로그인 실패')
       }
     } catch (error) {
       console.error(error);

@@ -9,11 +9,13 @@ const StoreList = ({}) => {
   const [stores, setStores] = useState([]);
   const [token, setToken] = useState('');
 
-
   useEffect(() => {
     fetchToken();
-    fetchStores();
-  }, [token, stores])
+    if (token) {
+      // 페이지가 로드될 때 매장 리스트를 불러옴
+      fetchStores();
+    }
+  }, [token])
   
 
   const fetchStores = async () => {
@@ -82,7 +84,7 @@ const StoreList = ({}) => {
             </div>
           </div>
     ) : (
-      <StoreRegistration setShowRegister={setShowRegister}/>
+      <StoreRegistration setShowRegister={setShowRegister} fetchStores={fetchStores}/>
     )}
    
     </>
