@@ -17,14 +17,15 @@ const HomePage = () => {
 
   return (
     <>
-    <div className='min-h-screen bg-slate-900'>
+    <div className='min-h-screen bg-slate-900 flex flex-col'>
         <Nav />
-        <div className='flex w-full'>
-        <SideNav setCategory={setCategory}/>
-        {category == 'showStorelist' && <StoreList />}
-        {category == 'showChart' && <StoreChart />}
-        {category == 'showCctv' && <StoreCctv />}
-        </div>
+        <div className='w-full lg:flex justify-center text-white font-Pretendard
+         lg:px-36 '>
+          <SideNav setCategory={setCategory}/>
+          {category == 'showStorelist' && <StoreList />}
+          {category == 'showChart' && <StoreChart />}
+          {category == 'showCctv' && <StoreCctv />}
+      </div>
     </div>
     </>
   )

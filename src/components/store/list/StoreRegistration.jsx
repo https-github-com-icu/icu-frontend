@@ -3,56 +3,64 @@ import SideNav from '../../nav/SideNav'
 import StoreList from '../list/StoreList'
 import { Button } from '@material-tailwind/react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const StoreRegistration = ({setShowRegister}) => {
+const StoreRegistration = ({setShowRegister, fetchStores}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [wifi, setWifi] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('userToken') || '')
 
+  
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/store', { name, location, wifi }); // ownerId를 owner로 추가하여 전달
+      if(!token) {
+        prompt('토큰이 없습니다. 로그인 후 다시 시도하세요');
+      }
+      const response = await axios.post('http://localhost:10110/api/store', { name, location, wifi },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      ); // ownerId를 owner로 추가하여 전달
       console.log(response.data); // 서버에서 받은 응답 확인
+
     } catch (error) {
       console.error('매장 등록 중 오류 발생:', error);
       // 오류 처리
     }
     setShowRegister(false); // 성공 시 뷰 변경
+    fetchStores()
   };
 
 
 
   return (
     <>
-      <div className='w-full flex font-[Pretendard] text-white justifyu-center'>
-        <div className='w-full'>
+      <div className='w-full flex flex-col justify-center items-center'>
+      <div className='w-full flex justify-between items-center px-10'>
         {/* 매장 리스트 */}
-        <div className='w-full min-full flex-col'>
-            <div className=' flex justify-between px-20 py-10 '>
-              <div className='min-w-[250px]'>
-              <div className='font-bold text-[38px] min-w-1/2'>매장 등록하기 <p className='font-medium text-[18px]'>등록할 매장 정보를 입력하세요</p></div>
-              </div>
-              <div className='flex min-w-[250px] space-x-5 items-center justify-between font-bold text-[20px]'>
-              {/* 매장 등록 & 편집 버튼 그룹 */}
-              </div>
-          </div>
-
-            <div className='w-full flex justify-center'>
-              <div className='w-[60%] p-4 text-[22px] font-bold'>
-                <ul className='w-full px-10 space-y-10'>
-                  <li className='flex justify-between items-center text-center'>
+        <div className='w-full'>
+        <p className='py-2 text-3xl font-bold'>매장 등록하기</p>
+        <p className='text-md'>관리할 매장을 등록하세요</p>
+        </div>
+      </div>
+      <div className='mt-10 w-full lg:w-2/3 px-10 '>
+      <ul className='space-y-10'>
+                  <li className='flex text-lg justify-between items-center text-center'>
                     <p>매장 이름</p>
-                    <input className='text-[20px] font-medium w-[50%] border px-2 py-1 rounded-md text-black' placeholder='매장 이름을 입력하세요.' value={name} onChange={(e) => setName(e.target.value)} />
+                    <input className='font-medium border px-2 py-1 rounded-md text-black' placeholder='매장 이름을 입력하세요.' value={name} onChange={(e) => setName(e.target.value)} />
                   </li>
 
-                  <li className='flex justify-between items-center text-center'>
+                  <li className='flex text-lg justify-between items-center text-center'>
                     <p>매장 위치</p>
-                    <input className='text-[20px] font-medium w-[50%] border px-2 py-1 rounded-md text-black' placeholder='내용을 입력하세요.' value={location} onChange={(e) => setLocation(e.target.value)} />
+                    <input className='font-medium  border px-2 py-1 rounded-md text-black' placeholder='내용을 입력하세요.' value={location} onChange={(e) => setLocation(e.target.value)} />
                   </li>
 
-                  <li className='flex justify-between items-center text-center'>
+                  <li className='flex text-lg justify-between items-center text-center'>
                     <p>매장 와이파이 번호</p>
-                    <input className='text-[20px] font-medium w-[50%] border px-2 py-1 rounded-md text-black' placeholder='내용을 입력하세요.' value={wifi} onChange={(e) => setWifi(e.target.value)} />
+                    <input className='font-medium  border px-2 py-1 rounded-md text-black' placeholder='내용을 입력하세요.' value={wifi} onChange={(e) => setWifi(e.target.value)} />
                   </li>
 
                   <li className='flex justify-center'>
@@ -67,11 +75,17 @@ const StoreRegistration = ({setShowRegister}) => {
                     </div>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      
+      </div>
+   
+
+
+
+
+
+
+      
     </>
   )
 }

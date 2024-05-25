@@ -163,7 +163,7 @@ const encryptData = (data, secretKey) => {
 
 
           {/* ID 유효성 인증 실패 */}
-          <Toaster />
+          {title === '회원가입' && <Toaster />}
         {errors?.id && notify(errors.id.message)}
          {errors?.password && notify(errors.password.message)}
          
