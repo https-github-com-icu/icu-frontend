@@ -18,7 +18,7 @@ const Nav = () => {
   
 
   return (
-<nav className='flex justify-between items-center px-20 py-10'>
+<nav className='flex justify-between items-center px-5 lg:px-20 py-10'>
   
 
     <button

@@ -7,7 +7,6 @@ const SignIn = () => {
   const nav = useNavigate()
 
   const formHandler = async ( data, encryptedData) => {
-
     try {
       const response = await fetch('http://localhost:10110/master/signin', {
       method: 'POST',  
@@ -20,9 +19,8 @@ const SignIn = () => {
       });
       if( response.ok ) {
         const responseData = await response.json();
-        localStorage.setItem('userToken', responseData);
-        console.log(data)
-        console.log(encryptedData)
+        console.log(responseData)
+        localStorage.setItem('userToken', responseData.token);
         nav('/homepage')
       } else {
         console.log('로그인 실패:', response.statusText)
