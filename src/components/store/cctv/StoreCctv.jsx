@@ -40,7 +40,7 @@ const StoreCctv = () => {
           </div>
 
           <div className='w-full flex justify-center'>
-            <div className='w-[60%] p-4 font-bold flex-col space-y-4'>
+            <div className='w-full md:w-[80%] lg:w-[60%] p-4 font-bold flex-col space-y-4'>
               <div className='flex justify-center'>
                 <div className='w-full aspect-w-16 aspect-h-9'>
                   <video className='w-full h-full object-cover transform -scale-x-100' ref={videoRef}></video>
@@ -57,8 +57,8 @@ const StoreCctv = () => {
               </div>
 
               <div className='flex justify-center'>
-                <label>
-                  <textarea className='p-2 text-black' placeholder='로그백 내용' rows={5} cols={105} />
+                <label className='w-full'>
+                  <textarea className='w-full p-2 text-black' placeholder='로그백 내용' rows={5} cols={105} />
                 </label>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from 'recharts'
 import Table from './Table.jsx'
 import './Table.css';
 
@@ -41,17 +41,19 @@ const Chart = () => {
         </div>
         
         <div className='w-full flex justify-center'>
-          <div className='w-[70%] p-4 font-bold flex-col'>
-            <div className='flex justify-center flex-col items-center'>
-              <BarChart width={1000} height={500} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
-                <CartesianGrid vertical ={false} storkeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Legend />
-                <Bar dataKey="loudSinger" fill="#e0e7ff" label={{position: 'top', fontsize: 14}} />
-                <Bar dataKey="smoking" fill="#a5b4fc" label={{position: 'top', fontsize: 14}} /> 
-                <Bar dataKey="theft" fill="#6366f1" label={{position: 'top', fontsize: 14}} />
-              </BarChart>
+          <div className='w-[70%] md:w-[60%] p-4 font-bold flex-col'>
+            <div className='w-full flex justify-center flex-col items-center'>
+              <ResponsiveContainer width={'100%'} height={500}>
+                <BarChart data={data} margin={{top: 5, right: 30, left: 20, bottom: 5,}}>
+                  <CartesianGrid vertical ={false} storkeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Legend />
+                  <Bar dataKey="loudSinger" fill="#e0e7ff" label={{position: 'top', fontsize: 14}} />
+                  <Bar dataKey="smoking" fill="#a5b4fc" label={{position: 'top', fontsize: 14}} /> 
+                  <Bar dataKey="theft" fill="#6366f1" label={{position: 'top', fontsize: 14}} />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
             <select
               className='W-[200px] text-black my-[20px]'
