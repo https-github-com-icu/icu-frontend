@@ -18,8 +18,8 @@ const UserInfo = () => {
 					</div>
 
 					<div className='w-full flex justify-center'>
-						<div className='w-[60%] text-[22px] font-bold'>
-							<ul className='w-full px-10 space-y-7'>
+						<div className='w-full md:w-[80%] lg:w-[60%] text-[18px] md:text-[22px] font-bold'>
+							<ul className='w-full px-3 md:px-10 space-y-7'>
 								<li className='flex justify-between items-center text-center'>
 									<p>사용자</p>
 									<p>ID</p>
@@ -33,13 +33,13 @@ const UserInfo = () => {
 								<li className='flex justify-between items-center text-center '>
 									<p>전화번호</p>
 									<div className='text-black'>
-										<select className='w-[100px] mx-5'>
+										<select className='w-[100px] mx-1 md:mx-3'>
 											<option>010</option>
 											<option>011</option>
 											<option>070</option>
 										</select>
-										<input className='w-[100px] border px-2 py-1 mx-5 rounded-md'/>
-										<input className='w-[100px] border px-2 py-1 ml-5 rounded-md'/>
+										<input className='w-[100px] border px-2 py-1 mx-1 md:mx-3 rounded-md'/>
+										<input className='w-[100px] border px-2 py-1 ml-1 md:ml-3 rounded-md'/>
 									</div>
 								</li>
 								
