@@ -1,26 +1,24 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const StoreCctv = () => {
+  const [option, setOption] = useState('파손');
+
+  const videos = {
+    "파손": "/videos/damage.mp4",
+    "흡연": "/videos/smoking.mp4",
+    "절도": "/videos/theft.mp4"
+  };
+  
+  function handleSelectChange(event) {
+    const value = event.target.value;
+    setOption(value);
+  }
 
   let videoRef = useRef(null)
 
-  const getUserCamera = () => {
-    navigator.mediaDevices.getUserMedia({
-      video:true
-    })
-    .then((stream) => {
-      let video = videoRef.current
-      video.srcObject = stream
-      video.play()
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-
   useEffect(() => {
-    getUserCamera()
-  },[videoRef])
+    console.log('선택된 옵션: ', option);
+  }, [option]);
 
   return (
     <>
@@ -30,10 +28,10 @@ const StoreCctv = () => {
             <div className='min-w-[250px]'>
               <div className='font-bold text-[38px] min-w-1/2'>CCTV</div>
               <div className='text-black'>
-                <select className='w-[150px]'>
-                  <option>스마트프리즘</option>
-                  <option>터치포인트</option>
-                  <option>스마트셀프</option>
+                <select className='w-[150px]' onChange={handleSelectChange} value={option}>
+                  <option value="파손">파손</option>
+                  <option value="흡연">흡연</option>
+                  <option value="절도">절도</option>
                 </select>
               </div>
             </div>
@@ -43,7 +41,9 @@ const StoreCctv = () => {
             <div className='w-full md:w-[80%] lg:w-[60%] p-4 font-bold flex-col space-y-4'>
               <div className='flex justify-center'>
                 <div className='w-full aspect-w-16 aspect-h-9'>
-                  <video className='w-full h-full object-cover transform -scale-x-100' ref={videoRef}></video>
+                  <video key={option} ref={videoRef} muted autoPlay loop>
+                    <source src={videos[option]} type="video/mp4" />
+                  </video>
                 </div>
               </div>
 
